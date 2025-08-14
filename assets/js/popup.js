@@ -1,7 +1,7 @@
 window.addEventListener('load', function () {
     setTimeout(function () {
         document.getElementById('help-popup').style.display = 'flex';
-    }, 1000);
+    }, 12000);
 });
 
 function closePopup() {
@@ -26,27 +26,11 @@ document.querySelectorAll('.nice-select .option').forEach(option => {
 
 // Attach to all forms
 function handleFormSubmit(formId) {
-    console.log(formId)
     const form = document.getElementById(formId);
     if (!form) return;
 
     form.addEventListener("submit", function (e) {
         e.preventDefault();
-
-        // Ensure nice-select updates hidden select for ajax_contact
-        if (formId === "ajax_contact") {
-            let niceSelect = form.querySelector('.nice-select .current');
-            let hiddenSelect = form.querySelector('select[name="topic"]');
-            if (niceSelect && hiddenSelect) {
-                let selectedOption = niceSelect.textContent.trim();
-                if (selectedOption && selectedOption !== "Select Query Topic") {
-                    hiddenSelect.value = selectedOption;
-                } else {
-                    alert("Please select a topic.");
-                    return;
-                }
-            }
-        }
 
         // Enforce required fields
         let fullname = form.querySelector('[name="fullname"]')?.value.trim();

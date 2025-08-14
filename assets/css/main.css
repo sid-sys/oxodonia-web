@@ -112,7 +112,9 @@ a {
   border-radius: 6px;
   font-size: 0.95rem;
   color: black;
+  padding: 8px;
 }
+
 
 
 .quote-form input,

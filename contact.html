@@ -26,17 +26,67 @@
 
 <body>
     <!-- header-area-start -->
-    <header class="header inner-header sticky-active">
+    <header class="header header-8 sticky-active">
+        <div class="primary-header">
+            <div class="primary-header-inner">
+                <div class="header-logo d-lg-block">
+                    <a href="index.html">
+                        <img class="logo-dark" src="assets/img/logo/logo-2.png" alt="Logo">
+                        <img class="logo-light" src="assets/img/logo/logo-3.png" alt="Logo">
+                    </a>
+                </div>
+                <div class="header-menu-wrap">
+                    <div class="mobile-menu-items">
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="#about">Who We Are</a></li>
+                            <li><a href="#service">What We Do</a></li>
+                            <li><a href="contact.html">Get in Touch</a></li>
+                            <!-- <li><a href="#project">Project</a></li> -->
+                            <!-- <li><a href="#blog">blog</a></li> -->
+                        </ul>
+                    </div>
+                </div>
+                <!-- /.header-menu-wrap -->
+                <div class="header-right-wrap">
+                    <div class="header-right">
+                        <div class="header-btn">
+                            <button class="btn-btn-primary"
+                                onclick="window.location.href='https://www.linkedin.com/company/oxodonia/'"
+                                style="background-color: #3f5af3;border-radius: 6px; width: 100px; height: 30px;"><i
+                                    class="fab fa-linkedin-in" style="color: white;"></i><i
+                                    class="fa-sharp fa-regular fa-arrow-right"
+                                    style="color: white;padding-left: 5px"></i></button>
+
+                        </div>
+                        <div class="sidebar-icon">
+                            <button class="sidebar-trigger open">
+                                <svg width="23" height="23" viewBox="0 0 23 23" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M0.5 0.5H4.5V4.5H0.5V0.5ZM0.5 9.5H4.5V13.5H0.5V9.5ZM0.5 18.5H4.5V22.5H0.5V18.5ZM9.5 0.5H13.5V4.5H9.5V0.5ZM9.5 9.5H13.5V13.5H9.5V9.5ZM9.5 18.5H13.5V22.5H9.5V18.5ZM18.5 0.5H22.5V4.5H18.5V0.5ZM18.5 9.5H22.5V13.5H18.5V9.5ZM18.5 18.5H22.5V22.5H18.5V18.5Z"
+                                        fill="currentColor" stroke="currentColor" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <!-- /.header-right -->
+                </div>
+            </div>
+            <!-- /.primary-header-inner -->
+        </div>
+    </header>
+    <!-- <header class="header inner-header sticky-active">
         <div class="primary-header">
             <div class="primary-header-inner">
                 <div class="header-logo d-lg-block">
                     <a href="index.html">
                         <img src="assets/img/logo/logo-2.png" alt="Logo">
                     </a>
-                </div>
+                </div> -->
 
-                <!-- /.header-menu-wrap -->
-                <div class="header-right">
+    <!-- /.header-menu-wrap -->
+    <!-- <div class="header-right">
                     <div class="sidebar-icon">
                         <button class="sidebar-trigger open">
                             <svg width="24" height="23" viewBox="0 0 24 23" fill="none"
@@ -53,12 +103,12 @@
                             </svg>
                         </button>
                     </div>
-                </div>
-                <!-- /.header-right -->
-            </div>
-        </div>
-        <!-- /.primary-header-inner -->
-    </header>
+                </div> -->
+    <!-- /.header-right -->
+    <!-- </div> -->
+    <!-- </div> -->
+    <!-- /.primary-header-inner -->
+    <!-- </header> -->
     <!-- /.Main Header -->
 
     <div id="popup-search-box">
@@ -94,7 +144,7 @@
                 <div class="side-menu-header">
                     <h3>About Us</h3>
                 </div>
-                <p>Oxodonia UK is a forward-thinking tech company based in the UK, specialising in web app development,
+                <p>Oxodonia is a forward-thinking tech company based in the UK, specialising in web app development,
                     digital marketing, and software testing. We help businesses grow by creating sleek, high-performing
                     digital products, driving online visibility, and ensuring software works flawlessly.</p>
                 <a href="contact.html" class="rr-primary-btn">Contact Us</a>
@@ -106,15 +156,15 @@
                 <ul class="side-menu-list">
                     <li>
                         <i class="fas fa-map-marker-alt"></i>
-                        <p>Old Docks House, Watery Lane, Preston, Lancashire PR2, </p>
+                        <p style="color: black;">Old Docks House, Watery Lane, Preston, Lancashire PR2, </p>
                     </li>
-                    <!-- <li>
-                            <i class="fas fa-phone"></i>
-                            <a href="tel:+000123456789">+000 123 (456) 789</a>
-                        </li> -->
+                    <li>
+                        <i class="fas fa-phone"></i>
+                        <a href="tel:+447593706165" style="color: black;">+44 7593706165</a>
+                    </li>
                     <li>
                         <i class="fas fa-envelope-open-text"></i>
-                        <a href="mailto:info@oxodonia.co.uk">info@oxodonia.co.uk</a>
+                        <a href="mailto:info@oxodonia.co.uk" style="color: black;">info@oxodonia.co.uk</a>
                     </li>
                 </ul>
             </div>
@@ -169,7 +219,7 @@
                                 <div class="contact-list">
                                     <div class="list-item">
                                         <div class="icon">
-                                            <i class="fa-light fa-location-dot"></i>
+                                            <i class="fa-solid fa-location-dot"></i>
                                         </div>
                                         <div class="content">
                                             <h4 class="title">Our Address</h4>
@@ -178,22 +228,30 @@
                                     </div>
                                     <div class="list-item">
                                         <div class="icon">
-                                            <i class="fa-light fa-phone"></i>
+                                            <i class="fa-solid fa-phone"></i>
+                                        </div>
+                                        <div class="content">
+                                            <h4 class="title">Phone</h4>
+                                            <span><a href="tel:+447593706165">+44 7593706165</a></span>
+                                        </div>
+                                    </div>
+                                    <div class="list-item">
+                                        <div class="icon">
+                                            <i class="fa-solid fa-envelope"></i>
                                         </div>
                                         <div class="content">
                                             <h4 class="title">Email</h4>
-                                            <!--<span><a href="tel:+65485965789">(+65) - 48596 - 5789</a></span>-->
                                             <span><a href="mailto:info@oxodonia.co.uk">info@oxodonia.co.uk</a></span>
                                         </div>
                                     </div>
                                     <div class="list-item">
                                         <div class="icon">
-                                            <i class="fa-light fa-clock"></i>
+                                            <i class="fa-solid fa-clock"></i>
                                         </div>
                                         <div class="content">
                                             <h4 class="title">Hours of Operation</h4>
-                                            <span>Monday - Friday: 09:00 - 20:00</span>
-                                            <span>Sunday & Saturday: 10:30 - 22:00</span>
+                                            <span>Monday - Friday: 09:00 - 17:00</span>
+                                            <span>Sunday & Saturday: Closed</span>
                                         </div>
                                     </div>
                                 </div>
@@ -217,6 +275,7 @@
                                                 </div>
                                             </div>
                                         </div>
+
                                         <div class="form-group row">
                                             <div class="col-md-6">
                                                 <div class="form-item">
@@ -231,35 +290,21 @@
                                                 </div>
                                             </div>
                                         </div>
+
                                         <div class="form-group row">
                                             <div class="col-md-12">
                                                 <div class="form-item">
-                                                    <!-- Hidden real select field for PHP -->
-                                                    <select id="topic" name="topic" class="form-control" required
-                                                        style="display:none;">
+                                                    <select id="topic" name="topic" class="form-control topic-select"
+                                                        required>
                                                         <option value="">Select Query Topic</option>
                                                         <option value="Web Development">Web Development</option>
                                                         <option value="Digital Marketing">Digital Marketing</option>
                                                         <option value="Software Testing">Software Testing</option>
                                                     </select>
-                                                    <!-- Nice Select UI -->
-                                                    <div class="nice-select select-control form-control country"
-                                                        tabindex="0">
-                                                        <span class="current">Select Query Topic</span>
-                                                        <ul class="list">
-                                                            <li data-value="" class="option selected focus">Select Query
-                                                                Topic</li>
-                                                            <li data-value="Web Development" class="option">Web
-                                                                Development</li>
-                                                            <li data-value="Digital Marketing" class="option">Digital
-                                                                Marketing</li>
-                                                            <li data-value="Software Testing" class="option">Software
-                                                                Testing</li>
-                                                        </ul>
-                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
+
                                         <div class="form-group row">
                                             <div class="col-md-12">
                                                 <div class="form-item message-item">
@@ -268,6 +313,7 @@
                                                 </div>
                                             </div>
                                         </div>
+
                                         <div class="submit-btn">
                                             <button id="submit" class="rr-primary-btn" type="submit">Submit
                                                 Message</button>
@@ -350,8 +396,108 @@
                 </div>
             </div>
             <!-- ./ map-wrapper -->
-
-            <footer class="footer-section bg-dark-1">
+            <footer class="footer-section footer-2 footer-4 footer-10 bg-dark-1">
+                <div class="shape"><img src="assets/img/shapes/footer-bg-shape.png" alt="footer"></div>
+                <div class="container">
+                    <div class="row footer-wrap">
+                        <div class="col-lg-3 col-md-6">
+                            <div class="footer-widget logo-widget">
+                                <div class="widget-header">
+                                    <div class="footer-logo">
+                                        <a href="index.html"><img src="assets/img/logo/logo-2.png" alt="logo"></a>
+                                    </div>
+                                </div>
+                                <!-- <p>Oxodonia Ltd.</p> -->
+                                <!-- <p>Email: info@oxodonia.co.uk</p> -->
+                                <p>Oxodonia LTD. <br>
+                                    Email: info@oxodonia.co.uk <br>
+                                    Registered in England & Wales: Company No. 16505056 <br>
+                                    Address: Old Docks House, Watery Lane, Preston, Lancashire PR2</p>
+                                <!-- <ul class="social-list list-2">
+                                <li class="facebook">
+                                    <a href="#"><i class="fab fa-linkedin"></i></a> -->
+                                <!-- </li>
+                                <li class="pinterest">
+                                    <a href="#"><i class="fab fa-pinterest"></i></a>
+                                </li>
+                                <li class="twitter">
+                                    <a href="#"><i class="fab fa-twitter"></i></a>
+                                </li>
+                                <li class="instagram">
+                                    <a href="#"><i class="fab fa-instagram"></i></a>
+                                </li> -->
+                                <!-- </ul> -->
+                            </div>
+                        </div>
+                        <!-- <div class="col-lg-3 col-md-6">
+                        <div class="footer-widget footer-col-2">
+                            <div class="widget-header">
+                                <h3 class="widget-title">Useful Links</h3>
+                            </div>
+                            <ul class="footer-list">
+                                <li><a href="about.html">About Us</a></li>
+                                <li><a href="project.html">Our Gallery</a></li>SSSSSS
+                                <li><a href="service.html">Our Services</a></li>
+                                <li><a href="team.html">Our Team</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="footer-widget">
+                            <div class="widget-header">
+                                <h3 class="widget-title">Contact Us</h3>
+                            </div>
+                            <ul class="address-list">
+                                <li><a href="mailto:info@oxodonia.co.uk">info@oxodonia.co.uk</a></li>
+                                <li><a href="tel:+2585492153215">+258 (549) 2158 3215</a></li>
+                                <li>2589 Dorland Street Luke INUA <br> Berlin, Germany</li>
+                            </ul>
+                        </div>
+                    </div> -->
+                        <div class="col-lg-3 col-md-6">
+                            <div class="footer-widget">
+                                <div class="widget-header">
+                                    <h3 class="widget-title">Subscribe newsletter</h3>
+                                </div>
+                                <div class="footer-form mb-20">
+                                    <form action="#" class="rr-subscribe-form">
+                                        <input class="form-control" type="email" name="email"
+                                            placeholder="Email address">
+                                        <input type="hidden" name="action" value="mailchimpsubscribe">
+                                        <button class="submit">Sign Up</button>
+                                        <div class="clearfix"></div>
+                                    </form>
+                                </div>
+                                <div class="form-check form-item">
+                                    <input class="form-check-input" type="checkbox" value="" id="man">
+                                    <label class="form-check-label" for="man">
+                                        I’m okay with getting emails and having
+                                        that tracked to improve my experience
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="copyright-area">
+                    <div class="container">
+                        <div class="row copyright-content justify-content-center">
+                            <div class="col-lg-6 col-md-12">
+                                <p class="mb-0">© 2025 Oxodonia. All Rights Reserved.</p>
+                            </div>
+                            <div class="col-lg-6 col-md-12">
+                                <ul class="copyright-list">
+                                    <li><a href="LegalPages/accessibility.html">accessibility</a></li>
+                                    <li><a href="LegalPages/cookie-policy.html">cookies</a></li>
+                                    <li><a href="LegalPages/terms-and-conditions.html">terms</a></li>
+                                    <li><a href="LegalPages/privacy-policy.html">Privacy policy</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+            <!-- <footer class="footer-section bg-dark-1">
                 <div class="shape"><img src="assets/img/shapes/footer-shape.png" alt="footer"></div>
                 <div class="container">
                     <div class="row footer-wrap">
@@ -361,23 +507,23 @@
                                     <div class="footer-logo">
                                         <a href="index.html"><img src="assets/img/logo/logo-2.png" alt="logo"></a>
                                     </div>
-                                </div>
-                                <!--<p class="mb-20">Centric aplications productize before front end vortals visualize front end is results and value added</p>-->
-                                <h4 class="title">WE ARE AVAILABLE <span>Mon-Sat: 09.00 am to 6.30 pm</span></h4>
+                                </div> -->
+            <!--<p class="mb-20">Centric aplications productize before front end vortals visualize front end is results and value added</p>-->
+            <!-- <h4 class="title">WE ARE AVAILABLE <span>Mon-Sat: 09.00 am to 6.30 pm</span></h4>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-6">
                             <div class="footer-widget footer-col-2">
-                                <div class="widget-header">
-                                    <!--<h3 class="widget-title">Useful Links</h3>-->
-                                </div>
-                                <!--<ul class="footer-list">-->
-                                <!--    <li><a href="about.html">About Us</a></li>-->
-                                <!--    <li><a href="project.html">Our Gallery</a></li>-->
-                                <!--    <li><a href="service.html">Our Services</a></li>-->
-                                <!--    <li><a href="team.html">Our Team</a></li>-->
-                                <!--</ul>-->
-                            </div>
+                                <div class="widget-header"> -->
+            <!--<h3 class="widget-title">Useful Links</h3>-->
+            <!-- </div> -->
+            <!--<ul class="footer-list">-->
+            <!--    <li><a href="about.html">About Us</a></li>-->
+            <!--    <li><a href="project.html">Our Gallery</a></li>-->
+            <!--    <li><a href="service.html">Our Services</a></li>-->
+            <!--    <li><a href="team.html">Our Team</a></li>-->
+            <!--</ul>-->
+            <!-- </div>
                         </div>
                         <div class="col-lg-3 col-md-6">
                             <div class="footer-widget">
@@ -385,9 +531,9 @@
                                     <h3 class="widget-title">Contact Us</h3>
                                 </div>
                                 <ul class="address-list">
-                                    <li><a href="mailto:info@oxodonia.co.uk">info@oxodonia.co.uk</a></li>
-                                    <!--<li><a href="tel:+2585492153215">+258 (549) 2158 3215</a></li>-->
-                                    <li>Old Docks House, Watery Lane, Preston, Lancashire PR2</li>
+                                    <li><a href="mailto:info@oxodonia.co.uk">info@oxodonia.co.uk</a></li> -->
+            <!--<li><a href="tel:+2585492153215">+258 (549) 2158 3215</a></li>-->
+            <!-- <li>Old Docks House, Watery Lane, Preston, Lancashire PR2</li>
                                 </ul>
                             </div>
                         </div>
@@ -422,26 +568,26 @@
                             <div class="col-md-6">
                                 <p>© 2025 Oxodonia. All Rights Reserved.</p>
                             </div>
-                            <div class="col-md-6">
-                                <!--<ul class="social-list">-->
-                                <!--    <li class="facebook">-->
-                                <!--        <a href="#"><i class="fab fa-facebook-f"></i></a>-->
-                                <!--    </li>-->
-                                <!--    <li class="pinterest">-->
-                                <!--        <a href="#"><i class="fab fa-pinterest"></i></a>-->
-                                <!--    </li>-->
-                                <!--    <li class="twitter">-->
-                                <!--        <a href="#"><i class="fab fa-twitter"></i></a>-->
-                                <!--    </li>-->
-                                <!--    <li class="instagram">-->
-                                <!--        <a href="#"><i class="fab fa-instagram"></i></a>-->
-                                <!--    </li>-->
-                                </ul>
+                            <div class="col-md-6"> -->
+            <!--<ul class="social-list">-->
+            <!--    <li class="facebook">-->
+            <!--        <a href="#"><i class="fab fa-facebook-f"></i></a>-->
+            <!--    </li>-->
+            <!--    <li class="pinterest">-->
+            <!--        <a href="#"><i class="fab fa-pinterest"></i></a>-->
+            <!--    </li>-->
+            <!--    <li class="twitter">-->
+            <!--        <a href="#"><i class="fab fa-twitter"></i></a>-->
+            <!--    </li>-->
+            <!--    <li class="instagram">-->
+            <!--        <a href="#"><i class="fab fa-instagram"></i></a>-->
+            <!--    </li>-->
+            <!-- </ul>
                             </div>
                         </div>
                     </div>
                 </div>
-            </footer>
+            </footer> -->
             <!-- ./ footer-section -->
 
         </div>
