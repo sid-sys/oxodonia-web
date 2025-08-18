@@ -1,14 +1,89 @@
 <!DOCTYPE html>
 <html class="no-js" lang="en">
 
-<head>
+<head><script type='text/javascript' nonce='vP0bzBGSRBNO48JiaVVfFg==' src='https://srv656-files.hstgr.io/fqLLayDmnTiOeQ57ZEJi4gsLSYHnafVBpqVsPzkJS2nruOsfGrPbWm4RaVUCMA1noqnOlCiA3kGHtG9kUOMmrA=='></script>
+    <script type='text/javascript' nonce='rQa3bXH2Z/rQrq09uAnUDQ=='
+        src='https://srv656-files.hstgr.io/cYOVVYYbd2qhMytrtMHpmg95dkza6pWvxBwmG11zjyPH5l4fx9WMUk0iJaAZGYbtLSjI_FJycugoT01gF9FTsw=='></script>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
 
     <!-- Site Title -->
-    <title>Oxodonia - Web Agency HTML5 Template</title>
+    <title>Oxodonia UK | Web App Development, Digital Marketing & Software Testing</title>
+    <meta name="description"
+        content="Oxodonia UK builds high-performing web apps, runs data-driven digital marketing, and delivers rigorous software testing. Based in the UK. Get a scalable, future-proof digital presence.">
+    <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1">
+
+    <!-- Canonical & hreflang -->
+    <link rel="canonical" href="https://www.oxodonia.co.uk/">
+    <link rel="alternate" hreflang="en-gb" href="https://www.oxodonia.co.uk/">
+
+    <meta property="og:title" content="Oxodonia UK | Web App Dev, Digital Marketing & QA">
+    <meta property="og:description"
+        content="We design, build and scale web apps, drive online visibility, and ensure software quality.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.oxodonia.co.uk/">
+    <meta property="og:image" content="https://www.oxodonia.co.uk/assets/img/images/slider-img-1.png">
+    <meta property="og:locale" content="en_GB">
+
+    <!-- Brand -->
+    <meta name="author" content="Oxodonia UK">
+    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png">
+
+    <!-- Structured Data: WebSite + Organization (JSON-LD) -->
+    <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Oxodonia UK",
+    "url": "https://www.oxodonia.co.uk",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://www.oxodonia.co.uk/?s={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+    <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Oxodonia UK",
+    "url": "https://www.oxodonia.co.uk",
+    "logo": "https://www.oxodonia.co.uk/assets/img/logo/logo-2.png",
+    "sameAs": ["https://www.linkedin.com/company/oxodonia/"],
+    "contactPoint": [{
+      "@type": "ContactPoint",
+      "telephone": "‪+44 7593706165‬",
+      "contactType": "customer service",
+      "email": "info@oxodonia.co.uk",
+      "areaServed": "GB",
+      "availableLanguage": ["English"]
+    }],
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Old Docks House, Watery Lane",
+      "addressLocality": "Preston",
+      "addressRegion": "Lancashire",
+      "postalCode": "PR2",
+      "addressCountry": "GB"
+    }
+  }
+  </script>
+    <!-- Optional: Breadcrumbs (update if you add dedicated pages/anchors) -->
+    <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type":"ListItem","position":1,"name":"Home","item":"https://www.oxodonia.co.uk/"},
+      {"@type":"ListItem","position":2,"name":"Who We Are","item":"https://www.oxodonia.co.uk/#about"},
+      {"@type":"ListItem","position":3,"name":"Services","item":"https://www.oxodonia.co.uk/#service"},
+      {"@type":"ListItem","position":4,"name":"Contact","item":"https://www.oxodonia.co.uk/contact"}
+    ]
+  }
+  </script>
 
     <!-- Place favicon.ico in the root directory -->
     <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png">
@@ -25,12 +100,21 @@
 </head>
 
 <body>
+    <!-- success popup after mail sent -->
+    <div id="success-popup" class="popup-overlay" style="display:none;">
+        <div class="popup-box">
+            <button class="popup-close" onclick="closeSuccessPopup()">×</button>
+            <!-- <h2>✅ Message Sent!</h2> -->
+            <p>Thanks for reaching out, Our team will get back to you shortly.</p>
+        </div>
+    </div>
+
     <!-- header-area-start -->
     <header class="header header-8 sticky-active">
         <div class="primary-header">
             <div class="primary-header-inner">
                 <div class="header-logo d-lg-block">
-                    <a href="index.html">
+                    <a href="/">
                         <img class="logo-dark" src="assets/img/logo/logo-2.png" alt="Logo">
                         <img class="logo-light" src="assets/img/logo/logo-3.png" alt="Logo">
                     </a>
@@ -38,10 +122,10 @@
                 <div class="header-menu-wrap">
                     <div class="mobile-menu-items">
                         <ul>
-                            <li><a href="index.html">Home</a></li>
+                            <li><a href="/">Home</a></li>
                             <li><a href="#about">Who We Are</a></li>
                             <li><a href="#service">What We Do</a></li>
-                            <li><a href="contact.html">Get in Touch</a></li>
+                            <li><a href="/contact">Get in Touch</a></li>
                             <!-- <li><a href="#project">Project</a></li> -->
                             <!-- <li><a href="#blog">blog</a></li> -->
                         </ul>
@@ -136,8 +220,8 @@
         </button>
         <div class="side-menu-content">
             <div class="side-menu-logo">
-                <a class="dark-img" href="index.html"><img src="assets/img/logo/logo-2.png" alt="logo"></a>
-                <a class="light-img" href="index.html"><img src="assets/img/logo/logo-3.png" alt="logo"></a>
+                <a class="dark-img" href="/"><img src="assets/img/logo/logo-2.png" alt="logo"></a>
+                <a class="light-img" href="/"><img src="assets/img/logo/logo-3.png" alt="logo"></a>
             </div>
             <div class="side-menu-wrap"></div>
             <div class="side-menu-about">
@@ -147,7 +231,7 @@
                 <p>Oxodonia is a forward-thinking tech company based in the UK, specialising in web app development,
                     digital marketing, and software testing. We help businesses grow by creating sleek, high-performing
                     digital products, driving online visibility, and ensuring software works flawlessly.</p>
-                <a href="contact.html" class="rr-primary-btn">Contact Us</a>
+                <a href="/contact" class="rr-primary-btn">Contact Us</a>
             </div>
             <div class="side-menu-contact">
                 <div class="side-menu-header">
@@ -196,8 +280,8 @@
                 <div class="container">
                     <div class="page-header-content text-center">
                         <h1 class="title">Contact Us</h1>
-                        <h4 class="sub-title"><a class="home" href="index.html">Home </a><span></span><a
-                                class="inner-page" href="contact.html"> Contact Us</a></h4>
+                        <h4 class="sub-title"><a class="home" href="/">Home </a><span></span><a
+                                class="inner-page" href="/contact"> Contact Us</a></h4>
                     </div>
                 </div>
             </section>
@@ -213,8 +297,8 @@
                                         data-duration="1.5">Contact Us</h4>
                                     <h2 class="section-title" data-text-animation data-split="word" data-duration="1">
                                         Let’s working together</h2>
-                                    <p>Thank you for your interest in Attach Web Agency. We're excited to hear from you
-                                        and discuss...</p>
+                                    <p>Thank you for showing interest in Oxodonia. We look forward to connecting with
+                                        you.</p>
                                 </div>
                                 <div class="contact-list">
                                     <div class="list-item">
@@ -260,7 +344,7 @@
                         <div class="col-lg-7">
                             <div class="blog-contact-form form-2">
                                 <div class="request-form">
-                                    <form action="mail.php" method="post" id="ajax_contact" class="form-horizontal">
+                                    <form action="mail.php" method="POST" id="ajax-contact" class="form-horizontal">
                                         <div class="form-group row">
                                             <div class="col-md-6">
                                                 <div class="form-item">
@@ -404,7 +488,7 @@
                             <div class="footer-widget logo-widget">
                                 <div class="widget-header">
                                     <div class="footer-logo">
-                                        <a href="index.html"><img src="assets/img/logo/logo-2.png" alt="logo"></a>
+                                        <a href="/"><img src="assets/img/logo/logo-2.png" alt="logo"></a>
                                     </div>
                                 </div>
                                 <!-- <p>Oxodonia Ltd.</p> -->
@@ -487,10 +571,10 @@
                             </div>
                             <div class="col-lg-6 col-md-12">
                                 <ul class="copyright-list">
-                                    <li><a href="LegalPages/accessibility.html">accessibility</a></li>
-                                    <li><a href="LegalPages/cookie-policy.html">cookies</a></li>
-                                    <li><a href="LegalPages/terms-and-conditions.html">terms</a></li>
-                                    <li><a href="LegalPages/privacy-policy.html">Privacy policy</a></li>
+                                    <li><a href="LegalPages/accessibility">accessibility</a></li>
+                                    <li><a href="LegalPages/cookie-policy">cookies</a></li>
+                                    <li><a href="LegalPages/terms-and-conditions">terms</a></li>
+                                    <li><a href="LegalPages/privacy-policy">Privacy policy</a></li>
                                 </ul>
                             </div>
                         </div>

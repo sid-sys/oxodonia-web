@@ -42,6 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Send email
     if (mail($recipient, $subject, $email_content, $headers)) {
         http_response_code(200); // Success for AJAX
+        header("Location: /index.html");
         echo "Message sent successfully.";
     } else {
         http_response_code(500);
