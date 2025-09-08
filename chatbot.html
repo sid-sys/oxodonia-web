@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Job Chat · Modern UI</title>
+  <style>
+    :root {
+      --bg: #0f1220;
+      --panel: #12162a;
+      --muted: #a2a8bf;
+      /* a bit brighter for readability */
+      --text: #e9ecf1;
+      --accent: #6c9ffd;
+      --accent-2: #8ef6d1;
+      --bubble-user: #2a3156;
+      --bubble-bot: #1b1f38;
+      /* lighter than header to separate */
+      --chip: #1c2244;
+      --border: #2d3256;
+      /* slightly lighter to show separation */
+      --shadow: 0 10px 30px rgba(0, 0, 0, .35);
+      --radius: 16px;
+    }
+
+    * {
+      box-sizing: border-box
+    }
+
+    html,
+    body {
+      height: 100%
+    }
+
+    body {
+      margin: 0;
+      background:
+        radial-gradient(1200px 600px at 20% -10%, rgba(140, 100, 255, .18), transparent 60%),
+        radial-gradient(900px 500px at 120% 20%, rgba(46, 148, 255, .16), transparent 60%),
+        var(--bg);
+      color: var(--text);
+      font: 15px/1.45 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      display: grid;
+      place-items: center;
+      padding: 24px;
+    }
+
+    .app {
+      width: min(1100px, 100%);
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      gap: 18px;
+    }
+
+    @media (max-width: 940px) {
+      .app {
+        grid-template-columns: 1fr
+      }
+
+      .aside {
+        order: 2
+      }
+    }
+
+    .card {
+      background: linear-gradient(180deg, rgba(255, 255, 255, .04), rgba(255, 255, 255, .01));
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+    }
+
+    /* Header (improved separation) */
+    .header {
+      padding: 16px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      border-bottom: 1px solid var(--border);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, .35);
+      /* subtle drop shadow below header */
+      position: sticky;
+      top: 0;
+      z-index: 2;
+      /* keeps header visible in chat */
+      background: linear-gradient(180deg, rgba(255, 255, 255, .02), rgba(255, 255, 255, .005));
+      border-top-left-radius: var(--radius);
+      border-top-right-radius: var(--radius);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px
+    }
+
+    .logo {
+      width: 36px;
+      height: 36px;
+      display: grid;
+      place-items: center;
+      background: conic-gradient(from 180deg, var(--accent), var(--accent-2));
+      border-radius: 10px;
+      box-shadow: 0 8px 20px rgba(108, 159, 253, .35)
+    }
+
+    .brand h1 {
+      font-size: 16px;
+      margin: 0;
+      letter-spacing: .2px
+    }
+
+    .badges {
+      display: flex;
+      gap: 8px
+    }
+
+    .badge {
+      border: 1px dashed var(--border);
+      color: var(--muted);
+      padding: 6px 8px;
+      border-radius: 999px;
+      font-size: 12px
+    }
+
+    .toggles {
+      display: flex;
+      gap: 10px;
+      align-items: center
+    }
+
+    .toggle {
+      background: var(--chip);
+      border: 1px solid var(--border);
+      padding: 8px 12px;
+      border-radius: 999px;
+      cursor: pointer;
+      color: var(--text);
+      font-size: 12px
+    }
+
+    .aside {
+      display: flex;
+      flex-direction: column;
+      gap: 18px
+    }
+
+    /* Search panel */
+    .search {
+      padding: 14px;
+      display: grid;
+      gap: 10px
+    }
+
+    /* .fields{display:grid; grid-template-columns: 1fr 1fr; gap:10px} */
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px
+    }
+
+    label {
+      font-size: 12px;
+      color: var(--muted)
+    }
+
+    input,
+    select {
+      background: #0e1226;
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 12px 12px;
+      border-radius: 12px;
+      outline: none
+    }
+
+    .actions {
+      display: flex;
+      gap: 10px
+    }
+
+    .btn {
+      border: none;
+      cursor: pointer;
+      border-radius: 12px;
+      padding: 12px 14px;
+      font-weight: 600
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), #4e79ff);
+      color: white;
+      box-shadow: 0 8px 18px rgba(108, 159, 253, .35)
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--muted);
+      border: 1px solid var(--border)
+    }
+
+    /* Quick chips */
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px
+    }
+
+    .chip {
+      background: var(--chip);
+      border: 1px solid var(--border);
+      color: #cfd6ff;
+      padding: 8px 12px;
+      border-radius: 999px;
+      cursor: pointer;
+      font-size: 12px;
+      transition: transform .08s ease, box-shadow .12s ease, border-color .12s ease;
+    }
+
+    .chip:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 14px rgba(0, 0, 0, .25);
+      border-color: #3a4180
+    }
+
+    /* Chat */
+    .chat {
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      height: 680px
+    }
+
+    .messages {
+      padding: 24px 16px 16px;
+      /* extra top padding to separate from header */
+      overflow: auto;
+      display: flex;
+      gap: 12px;
+      flex-direction: column;
+    }
+
+    .msg {
+      display: flex;
+      gap: 10px;
+      max-width: 90%
+    }
+
+    .msg.user {
+      margin-left: auto;
+      justify-content: flex-end
+    }
+
+    .avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: #232a56;
+      display: grid;
+      place-items: center;
+      flex-shrink: 0
+    }
+
+    .bubble {
+      padding: 12px 14px;
+      border-radius: 14px;
+      border: 1px solid var(--border)
+    }
+
+    .user .bubble {
+      background: var(--bubble-user)
+    }
+
+    .bot .bubble {
+      background: var(--bubble-bot)
+    }
+
+    /* distinct from header */
+    .meta {
+      margin-top: 4px;
+      font-size: 11px;
+      color: var(--muted)
+    }
+
+    .typing {
+      display: inline-flex;
+      gap: 4px;
+      align-items: center
+    }
+
+    .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: #7fa1ff;
+      opacity: .6;
+      animation: blink 1.4s infinite
+    }
+
+    .dot:nth-child(2) {
+      animation-delay: .2s
+    }
+
+    .dot:nth-child(3) {
+      animation-delay: .4s
+    }
+
+    @keyframes blink {
+
+      0%,
+      80%,
+      100% {
+        opacity: .2
+      }
+
+      40% {
+        opacity: 1
+      }
+    }
+
+    /* Composer */
+    .composer {
+      padding: 12px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      gap: 10px;
+      align-items: center
+    }
+
+    .composer input[type="text"] {
+      flex: 1;
+      background: #0e1226;
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 14px 16px;
+      border-radius: 12px
+    }
+
+    .composer .send {
+      background: var(--accent);
+      color: #0b0f23;
+      border: none;
+      padding: 12px 14px;
+      border-radius: 12px;
+      cursor: pointer;
+      font-weight: 700
+    }
+
+    .composer .tool {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 10px 12px;
+      border-radius: 10px;
+      cursor: pointer
+    }
+
+    /* Job result cards */
+    .results {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px
+    }
+
+    .job {
+      background: rgba(255, 255, 255, .02);
+      border: 1px solid var(--border);
+      padding: 12px;
+      border-radius: 12px
+    }
+
+    .job h4 {
+      margin: 0 0 6px 0
+    }
+
+    .job .sub {
+      color: var(--muted);
+      font-size: 12px
+    }
+
+    .job .tags {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-top: 8px
+    }
+
+    .job .tag {
+      border: 1px solid var(--border);
+      background: #0e1226;
+      color: #cde3ff;
+      font-size: 11px;
+      padding: 4px 8px;
+      border-radius: 999px
+    }
+
+    .job .cta {
+      margin-top: 10px;
+      display: flex;
+      gap: 8px
+    }
+
+    .job .cta .btn {
+      padding: 10px 12px;
+      border-radius: 10px
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar {
+      height: 10px;
+      width: 10px
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #2a2f55;
+      border-radius: 999px
+    }
+  </style>
+</head>
+
+<body>
+  <div class="app">
+    <!-- Sidebar: search + suggestions -->
+    <aside class="aside">
+      <section class="card search" aria-label="Job Quick Search">
+        <div class="header" style="padding:10px 0 14px 0; box-shadow:none; position:static; background:transparent;">
+          <div class="brand" aria-label="Brand">
+            <div class="logo" aria-hidden="true">💼</div>
+            <h1>Job Chat Assistant</h1>
+          </div>
+          <div class="badges">
+            <span class="badge">Beta</span>
+            <span class="badge">Secure</span>
+          </div>
+        </div>
+
+        <div class="fields">
+          <div class="field">
+            <label for="role">Role</label>
+            <input id="role" placeholder="e.g., Frontend Engineer" />
+          </div>
+          <div class="field">
+            <label for="location">Location</label>
+            <input id="location" placeholder="e.g., London, Remote" />
+          </div>
+        </div>
+
+        <div class="fields">
+          <div class="field">
+            <label for="seniority">Seniority</label>
+            <select id="seniority">
+              <option value="any">Any</option>
+              <option>Intern</option>
+              <option>Junior</option>
+              <option>Mid</option>
+              <option>Senior</option>
+              <option>Lead</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="type">Type</label>
+            <select id="type">
+              <option value="any">Any</option>
+              <option>Full-time</option>
+              <option>Contract</option>
+              <option>Part-time</option>
+              <option>Internship</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="actions">
+          <button id="searchBtn" class="btn btn-primary">Search Jobs</button>
+          <button id="clearBtn" class="btn btn-ghost">Clear</button>
+        </div>
+
+        <div class="chips" style="margin-top:8px" aria-label="Quick prompts">
+          <span class="chip" data-chip="Find remote data scientist roles">Remote Data Scientist</span>
+          <span class="chip" data-chip="Interview tips for product managers">PM Interview Tips</span>
+          <span class="chip" data-chip="What salary can a senior backend engineer expect in Berlin?">Salary: Berlin
+            BE</span>
+          <span class="chip" data-chip="Write a short cover letter for a UX role">Cover Letter (UX)</span>
+        </div>
+      </section>
+
+      <section class="card" style="padding:14px" aria-label="Tips">
+        <h3 style="margin:6px 0 8px">Pro Tips</h3>
+        <ul style="margin:0; padding-left:18px; color:var(--muted); line-height:1.7">
+          <li>Ask: <em>“Find senior React roles in London paying £80k+.”</em></li>
+          <li>Search: <em>“Find UI developer positions in Liverpool.”</em></li>
+          <li>Try: <em>“Search for JavaScript engineer roles in Edinburgh.”</em></li>
+        </ul>
+      </section>
+    </aside>
+
+    <!-- Main chat -->
+    <main class="card chat" role="main" aria-label="Chat">
+      <div class="header">
+        <div class="brand">
+          <div class="logo" aria-hidden="true">🤖</div>
+          <div>
+            <strong>Career Copilot</strong>
+            <div class="meta">Job search & interview prep</div>
+          </div>
+        </div>
+        <div class="toggles">
+          <button class="toggle" id="darkToggle" aria-pressed="true">Dark</button>
+          <button class="toggle" id="newChat">New Chat</button>
+        </div>
+      </div>
+
+      <div id="messages" class="messages" aria-live="polite" aria-label="Conversation history">
+        <!-- initial message inserted by JS -->
+      </div>
+
+      <div class="composer" aria-label="Message composer">
+        <button class="tool" id="attachBtn" title="Attach resume (mock)">📎</button>
+        <input id="input" type="text" placeholder="Ask about jobs, salary, interviews… (Shift+Enter = newline)" />
+        <button id="send" class="send">Send</button>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    const $ = (sel, root = document) => root.querySelector(sel);
+    const $$ = (sel, root = document) => [...root.querySelectorAll(sel)];
+
+    const messagesEl = $('#messages');
+    const inputEl = $('#input');
+
+    // initial message
+    window.addEventListener('load', () => {
+      addBotMsg("Hi! I'm your Career Copilot. Try queries like <b>‘React in London’</b> or <b>‘Python jobs in Canada’</b>.");
+      inputEl.focus();
+    });
+
+    // typing indicator
+    function addTyping() {
+      const wrap = document.createElement('div');
+      wrap.className = 'msg bot';
+      wrap.innerHTML = `
+      <div class="avatar">🤖</div>
+      <div class="bubble"><span class="typing"><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></div>
+    `;
+      messagesEl.appendChild(wrap); messagesEl.scrollTop = messagesEl.scrollHeight;
+      return wrap;
+    }
+    function replaceTyping(node, html) {
+      node.innerHTML = `
+      <div class="avatar">🤖</div>
+      <div class="bubble">${html}</div>
+    `;
+      messagesEl.scrollTop = messagesEl.scrollHeight;
+    }
+
+    // message helpers
+    function addUserMsg(text) {
+      const wrap = document.createElement('div');
+      wrap.className = 'msg user';
+      wrap.innerHTML = `<div class="bubble">${escapeHtml(text).replace(/\n/g, '<br>')}</div>`;
+      messagesEl.appendChild(wrap); messagesEl.scrollTop = messagesEl.scrollHeight;
+    }
+    function addBotMsg(html) {
+      const wrap = document.createElement('div');
+      wrap.className = 'msg bot';
+      wrap.innerHTML = `<div class="avatar">🤖</div><div class="bubble">${html}</div>`;
+      messagesEl.appendChild(wrap); messagesEl.scrollTop = messagesEl.scrollHeight;
+    }
+    const escapeHtml = (s) => s.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;');
+
+    // 🧹 Cleaner + Expander for role text
+    function cleanRole(text) {
+      let role = text
+        .toLowerCase()
+        .replace(/\b(find|show|search|get|roles?|jobs?|positions?)\b/g, "")
+        .replace(/\s+/g, " ")
+        .trim();
+
+      // expansions for stronger matches
+      const expansions = {
+        "react": "react developer",
+        "python": "python developer",
+        "java": "java developer",
+        "node": "node.js developer",
+        "frontend": "frontend developer",
+        "backend": "backend developer",
+        "fullstack": "full-stack developer",
+        "ml": "machine learning engineer",
+        "ai": "ai engineer",
+        "data": "data scientist"
+      };
+
+      Object.keys(expansions).forEach(key => {
+        const regex = new RegExp(`\\b${key}\\b`, "i");
+        if (regex.test(role)) {
+          role = role.replace(regex, expansions[key]);
+        }
+      });
+
+      return role;
+    }
+
+    // --- MAIN LOGIC: query Jooble API ---
+    async function handleQuery(q) {
+      const typing = addTyping();
+
+      try {
+        // Extract role/location
+        let role = q, location = "";
+        const match = q.match(/(.+?)\s+in\s+(.+)/i);
+        if (match) {
+          role = match[1].trim();
+          location = match[2].trim();
+        }
+
+        // 🧹 Clean + expand role
+        role = cleanRole(role);
+
+        // 1. Call Jooble API
+        const resp = await fetch("https://jooble.org/api/45295dc2-f60a-449f-873e-5b3851b8cb8b", {
+        // const resp = await fetch("/api/jobs", {  
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            keywords: role,
+            location: location
+          })
+        });
+
+        const data = await resp.json();
+        console.log("Jooble API results:", data);
+
+        // 2. Render job cards
+        if (data.jobs && data.jobs.length > 0) {
+          const jobsHtml = data.jobs.map(job => {
+            const roleParam = encodeURIComponent(role);
+            const locParam = encodeURIComponent(job.location || location);
+            const applyUrl = `https://uk.jooble.org/SearchResult?loc=10&rgns=${locParam}&ukw=${roleParam}`;
+
+            return `
+            <div class="job">
+              <h4>${job.title} · ${job.company || "Unknown"}</h4>
+              <div class="sub">${job.location || location}</div>
+              <div class="sub">${job.snippet || ""}</div>
+              <div class="cta">
+                <a href="${applyUrl}" target="_blank" class="btn btn-primary">Apply</a>
+              </div>
+            </div>
+          `;
+          }).join('');
+
+          replaceTyping(typing, `
+          I found <b>${data.jobs.length}</b> jobs for <b>${escapeHtml(role)}</b>${location ? ` in <b>${escapeHtml(location)}</b>` : ""}: 
+          <div class="results">${jobsHtml}</div>
+        `);
+        } else {
+          replaceTyping(typing, `⚠️ No jobs found for <b>${escapeHtml(role)}</b>${location ? ` in <b>${escapeHtml(location)}</b>` : ""}.`);
+        }
+
+      } catch (err) {
+        console.error(err);
+        replaceTyping(typing, "❌ Sorry, something went wrong while fetching jobs.");
+      }
+    }
+
+    // --- send message ---
+    function send() {
+      const text = inputEl.value.trim();
+      if (!text) return;
+      addUserMsg(text);
+      inputEl.value = '';
+      handleQuery(text);
+    }
+
+    $('#send').addEventListener('click', send);
+    inputEl.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); send(); }
+    });
+
+    // Chips
+    $$('.chip').forEach(el => el.addEventListener('click', () => {
+      addUserMsg(el.dataset.chip);
+      handleQuery(el.dataset.chip);
+    }));
+
+    // Search panel actions
+    $('#searchBtn').addEventListener('click', () => {
+      const role = $('#role').value.trim() || 'Any role';
+      const loc = $('#location').value.trim() || '';
+      const seniority = $('#seniority').value;
+      const type = $('#type').value;
+      const q = `${role} in ${loc} ${seniority !== 'any' ? (' · ' + seniority) : ''} ${type !== 'any' ? (' · ' + type) : ''}`.trim();
+      addUserMsg(q);
+      handleQuery(q);
+    });
+    $('#clearBtn').addEventListener('click', () => {
+      ['#role', '#location'].forEach(id => $(id).value = '');
+      $('#seniority').value = 'any';
+      $('#type').value = 'any';
+    });
+
+    // Dark toggle
+    $('#darkToggle').addEventListener('click', (e) => {
+      document.body.classList.toggle('light');
+      const on = !document.body.classList.contains('light');
+      e.currentTarget.setAttribute('aria-pressed', String(on));
+    });
+
+    // Attach (mock)
+    $('#attachBtn').addEventListener('click', () => {
+      addBotMsg('Upload flow is disabled in this demo.');
+    });
+
+    // New Chat
+    $('#newChat').addEventListener('click', () => {
+      messagesEl.innerHTML = '';
+      addBotMsg("Fresh start! Tell me what you're targeting (e.g., ‘React in London’)");
+    });
+  </script>
+
+</body>
+
+</html>
