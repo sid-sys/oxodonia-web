@@ -578,25 +578,25 @@
         .trim();
 
       // expansions for stronger matches
-      const expansions = {
-        "react": "react developer",
-        "python": "python developer",
-        "java": "java developer",
-        "node": "node.js developer",
-        "frontend": "frontend developer",
-        "backend": "backend developer",
-        "fullstack": "full-stack developer",
-        "ml": "machine learning engineer",
-        "ai": "ai engineer",
-        "data": "data scientist"
-      };
+      // const expansions = {
+      //   "react": "react developer",
+      //   "python": "python developer",
+      //   "java": "java developer",
+      //   "node": "node.js developer",
+      //   "frontend": "frontend developer",
+      //   "backend": "backend developer",
+      //   "fullstack": "full-stack developer",
+      //   "ml": "machine learning engineer",
+      //   "ai": "ai engineer",
+      //   "data": "data scientist"
+      // };
 
-      Object.keys(expansions).forEach(key => {
-        const regex = new RegExp(`\\b${key}\\b`, "i");
-        if (regex.test(role)) {
-          role = role.replace(regex, expansions[key]);
-        }
-      });
+      // Object.keys(expansions).forEach(key => {
+      //   const regex = new RegExp(`\\b${key}\\b`, "i");
+      //   if (regex.test(role)) {
+      //     role = role.replace(regex, expansions[key]);
+      //   }
+      // });
 
       return role;
     }
@@ -619,7 +619,7 @@
 
         // 1. Call Jooble API
         const resp = await fetch("https://jooble.org/api/45295dc2-f60a-449f-873e-5b3851b8cb8b", {
-        // const resp = await fetch("/api/jobs", {  
+          // const resp = await fetch("/api/jobs", {  
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
@@ -637,7 +637,7 @@
             const roleParam = encodeURIComponent(role);
             const locParam = encodeURIComponent(job.location || location);
             const applyUrl = `https://uk.jooble.org/SearchResult?loc=10&rgns=${locParam}&ukw=${roleParam}`;
-
+            console.log(applyUrl)
             return `
             <div class="job">
               <h4>${job.title} · ${job.company || "Unknown"}</h4>
@@ -655,7 +655,17 @@
           <div class="results">${jobsHtml}</div>
         `);
         } else {
-          replaceTyping(typing, `⚠️ No jobs found for <b>${escapeHtml(role)}</b>${location ? ` in <b>${escapeHtml(location)}</b>` : ""}.`);
+          // build debug search URL
+          const roleParam = encodeURIComponent(role);
+          const locParam = encodeURIComponent(location || "");
+          const debugUrl = `https://uk.jooble.org/SearchResult?loc=10&rgns=${locParam}&ukw=${roleParam}`;
+
+          console.warn("⚠️ API returned no jobs, but try SearchResult URL:", debugUrl);
+
+          replaceTyping(typing, `
+    ⚠️ No jobs found for <b>${escapeHtml(role)}</b>${location ? ` in <b>${escapeHtml(location)}</b>` : ""}.
+    <br>👉 You can still <a href="${debugUrl}" target="_blank">view search results directly on Jooble</a>.
+  `);
         }
 
       } catch (err) {
@@ -720,5 +730,4 @@
   </script>
 
 </body>
-
 </html>
